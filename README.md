@@ -17,7 +17,7 @@ go version
 Then paste and run the following into your terminal:
 
 ```shell
-git clone https://github.com/stevedylandev/pinata-go-cli && cd pinata-go-cli && go install .
+git clone https://github.com/PinataCloud/pinata-go-cli && cd pinata-go-cli && go install .
 ```
 
 ## Usage
@@ -45,6 +45,7 @@ The following flags are also available to set the name or CID version of the upl
 ```shell
 --version value, -v value  Set desired CID version to either 0 or 1. Default is 1. (default: 1)
 --name value, -n value     Add a name for the file you are uploading. By default it will use the filename on your system. (default: "nil")
+--cid-only                 Use if you only want the CID returned after an upload (default: false)
 
 ```
 
