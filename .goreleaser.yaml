@@ -22,6 +22,7 @@ builds:
       - linux
       - windows
       - darwin
+    binary: pinata-web3
 
 archives:
   - format: tar.gz
@@ -46,7 +47,7 @@ changelog:
       - "^test:"
 
 brews:
-  - name: pinata-web3
+  - name: pinata-go-cli
     homepage: "https://github.com/PinataCloud/pinata-go-cli"
     description: "Official Pinata CLI written in Go"
     license: "MIT"
