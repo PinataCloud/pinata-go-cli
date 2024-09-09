@@ -2,9 +2,10 @@ package main
 
 import (
 	"errors"
-	"github.com/urfave/cli/v2"
 	"log"
 	"os"
+
+	"github.com/urfave/cli/v2"
 )
 
 type UploadResponse struct {
@@ -60,8 +61,8 @@ type RequestsResponse struct {
 
 func main() {
 	app := &cli.App{
-		Name:  "pinata",
-		Usage: "A CLI for uploading files to Pinata! To get started make an API key at https://app.pinata.cloud/keys, then authorize the CLI with the auth command with your JWT",
+		Name:  "pinata-web3",
+		Usage: "A CLI for uploading files to IPFS through Pinata! To get started make an API key at https://app.pinata.cloud/keys, then authorize the CLI with the auth command with your JWT",
 		Commands: []*cli.Command{
 			{
 				Name:      "auth",
@@ -95,16 +96,16 @@ func main() {
 						Value:   "nil",
 						Usage:   "Add a name for the file you are uploading. By default it will use the filename on your system.",
 					},
-          &cli.BoolFlag{
-            Name: "cid-only",
-            Usage: "Use if you only want the CID returned after an upload",
-          },
+					&cli.BoolFlag{
+						Name:  "cid-only",
+						Usage: "Use if you only want the CID returned after an upload",
+					},
 				},
 				Action: func(ctx *cli.Context) error {
 					filePath := ctx.Args().First()
 					version := ctx.Int("version")
 					name := ctx.String("name")
-          cidOnly := ctx.Bool("cid-only")
+					cidOnly := ctx.Bool("cid-only")
 					if filePath == "" {
 						return errors.New("no file path provided")
 					}

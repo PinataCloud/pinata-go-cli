@@ -1,4 +1,4 @@
-module pinata
+module pinata-web3
 
 go 1.21
 
