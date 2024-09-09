@@ -46,7 +46,7 @@ changelog:
       - "^test:"
 
 brews:
-  - name: pinata-go-cli
+  - name: pinata-web3
     homepage: "https://github.com/PinataCloud/pinata-go-cli"
     description: "Official Pinata CLI written in Go"
     license: "MIT"
