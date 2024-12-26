@@ -4,20 +4,43 @@ Welcome to the Pinata Go CLI! This is still in active development so please let 
 
 ## Installation
 
-> Note - If you are on Windows please use WSL when installing, as the current implementation will not work natively on Windows OS. 
+> [!NOTE]
+> If you are on Windows please use WSL when installing. If you get an error that it was not able to resolve the github host run `git config --global --unset http.proxy`
 
-We are currently working on the build flow for binaries to make installation easier, but for now we recommend building from source.
+### Install Script
 
-To do this make sure you have [Go](https://go.dev/) installed on your computer and the following command returns a version:
+The easiest way to install is to copy and paste this script into your terminal
 
-```shell
+```bash
+curl -fsSL https://cli.pinata.cloud/install-web3 | bash
+```
+
+### Building from Source
+
+To build and instal from source make sure you have [Go](https://go.dev/) installed on your computer and the following command returns a version:
+
+```
 go version
 ```
 
 Then paste and run the following into your terminal:
 
-```shell
+```
 git clone https://github.com/PinataCloud/pinata-go-cli && cd pinata-go-cli && go install .
+```
+
+### Linux Binary
+
+As versions are released you can visit the [Releases](https://github.com/PinataCloud/pinata-go-cli/releases) page and download the appropriate binary for your system, them move it into your bin folder.
+
+For example, this is how I install the CLI for my Raspberry Pi
+
+```
+wget https://github.com/PinataCloud/pinata-go-cli/releases/download/v0.1.2/pinata-go-cli_Linux_arm64.tar.gz
+
+tar -xzf files-cli_Linux_arm64.tar.gz
+
+sudo mv pinata /usr/bin
 ```
 
 ## Usage
@@ -29,7 +52,7 @@ The Pinata CLI is equipped with the majortiry of features on the Pinata API.
 With the CLI installed you will first need to authenticate it with your [Pinata JWT](https://docs.pinata.cloud/docs/api-keys)
 
 ```shell
-pinata auth <your-jwt>
+pinata-web3 auth <your-jwt>
 ```
 
 ### `upload` - Uploads
@@ -37,7 +60,7 @@ pinata auth <your-jwt>
 After authentication you can now upload using the `upload` command or `u` for short, then pass in the path to the file or folder you want to upload.
 
 ```shell
-pinata upload ~/Pictures/somefolder/image.png
+pinata-web3 upload ~/Pictures/somefolder/image.png
 ```
 
 The following flags are also available to set the name or CID version of the upload.
@@ -54,7 +77,7 @@ The following flags are also available to set the name or CID version of the upl
 You can list files with the `list` command or the alias `l`. The results are printed in raw JSON to help increase composability.
 
 ```shell
-pinata list
+pinata-web3 list
 ```
 
 By default it will retrieve the 10 latest files, but with the flags below you can get more results or fine tune your search.
@@ -72,7 +95,7 @@ By default it will retrieve the 10 latest files, but with the flags below you ca
 If you ever need to you can delete a file by CID using the `delete` command or alias `d` followed by the file CID.
 
 ```shell
-pinata delete QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
+pinata-web3 delete QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
 ```
 
 ### `pin` - Pin by CID
@@ -80,7 +103,7 @@ pinata delete QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
 Separate from the `upload` command which uploads files from your machine to Pinata, you can also pin a file already on the IPFS network by using the `pin` command or alias `p` followed by the CID. This will start a pin by CID request which will go into a queue.
 
 ```shell
-pinata pin QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
+pinata-web3 pin QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
 ```
 
 To check the queue use the `request` command.
@@ -90,7 +113,7 @@ To check the queue use the `request` command.
 As mentioned in the `pin` command, when you submit an existing CID on IPFS to be pinned to your Pinata account, it goes into a request queue. From here it will go through multiple status'. For more info on these please consult the [documentation](https://docs.pinata.cloud/reference/get_pinning-pinjobs).
 
 ```shell
-pinata requests
+pinata-web3 requests
 ```
 
 You can use flags to help filter requests as well.
