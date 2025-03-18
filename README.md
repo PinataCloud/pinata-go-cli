@@ -1,11 +1,9 @@
-# Pinata Go CLI
+# Pinata Go CLI (Deprecated)
 
-Welcome to the Pinata Go CLI! This is still in active development so please let us know if you have any questions! :)
+> [!WARNING]
+> This CLI has been deprecated for a new version that supports both Public and Private IPFS: [https://github.com/PinataCloud/ipfs-cli](https://github.com/PinataCloud/ipfs-cli)
 
 ## Installation
-
-> [!NOTE]
-> If you are on Windows please use WSL when installing. If you get an error that it was not able to resolve the github host run `git config --global --unset http.proxy`
 
 ### Install Script
 
